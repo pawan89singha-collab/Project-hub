@@ -3,209 +3,328 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>स्मार्ट मोबाइल शॉप</title>
-  <!-- Tailwind CSS CDN -->
+  <title>स्मार्ट इलेक्ट्रॉनिक्स शॉप</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
 
-  <!-- ================= हेडर / नेविगेशन ================= -->
+  <!-- ================= हेडर ================= -->
   <header class="bg-blue-700 text-white sticky top-0 z-50 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center gap-2">
+      
+      <!-- लोगो और दुकान का नाम -->
       <div class="flex items-center space-x-2">
-        <i class="fa-solid fa-mobile-screen-button text-2xl text-yellow-300"></i>
-        <h1 class="text-xl md:text-2xl font-bold tracking-wide" id="shop-title-header">स्मार्ट मोबाइल पॉइंट</h1>
+        <i class="fa-solid fa-plug text-2xl text-yellow-300"></i>
+        <h1 class="text-lg md:text-2xl font-bold tracking-wide" id="txt-shop-title">स्मार्ट इलेक्ट्रॉनिक्स पॉइंट</h1>
       </div>
-      <!-- कार्ट बटन -->
-      <button onclick="toggleCart()" class="relative bg-blue-800 hover:bg-blue-900 px-4 py-2 rounded-lg font-semibold flex items-center space-x-2 transition">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span>कार्ट</span>
-        <span id="cart-count" class="bg-yellow-400 text-blue-900 font-bold px-2 py-0.5 text-xs rounded-full">0</span>
-      </button>
+
+      <!-- भाषा स्विच और कार्ट बटन -->
+      <div class="flex items-center space-x-2 md:space-x-4">
+        <!-- 🌐 लैंग्वेज चेंज बटन -->
+        <button onclick="toggleLanguage()" class="bg-blue-800 hover:bg-blue-900 border border-blue-400 text-xs md:text-sm px-3 py-1.5 rounded-lg font-semibold flex items-center space-x-1 transition">
+          <i class="fa-solid fa-globe text-yellow-300"></i>
+          <span id="lang-btn-text">English</span>
+        </button>
+
+        <!-- 🛒 कार्ट बटन -->
+        <button onclick="toggleCart()" class="relative bg-yellow-400 text-blue-900 hover:bg-yellow-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-bold flex items-center space-x-2 transition text-sm">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="txt-cart">कार्ट</span>
+          <span id="cart-count" class="bg-blue-900 text-white font-bold px-2 py-0.5 text-xs rounded-full">0</span>
+        </button>
+      </div>
+
     </div>
   </header>
 
   <!-- ================= मुख्य कंटेंट ================= -->
   <main class="max-w-7xl mx-auto px-4 py-6 w-full flex-grow">
     
-    <!-- बैनर -->
-    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-2xl p-6 mb-8 shadow-lg flex flex-col md:flex-row justify-between items-center">
+    <!-- मुख्य बैनर -->
+    <div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white rounded-2xl p-6 mb-8 shadow-xl flex flex-col md:flex-row justify-between items-center">
       <div class="mb-4 md:mb-0">
-        <h2 class="text-2xl md:text-3xl font-extrabold mb-2">बेस्ट मोबाइल डील्स और ऑफर! 🎉</h2>
-        <p class="text-blue-100 text-sm md:text-base">सभी प्रमुख ब्रांड्स के 5G स्मार्टफोन्स पर भारी छूट। सीधे व्हाट्सएप पर ऑर्डर करें।</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold mb-2" id="txt-banner-title">इलेक्ट्रॉनिक्स पर धांसू डील्स! 🎉</h2>
+        <p class="text-blue-100 text-sm md:text-base mb-3" id="txt-banner-sub">मोबाइल, स्मार्टवॉच, इयरबड्स और एक्सेसरीज पर बेस्ट ऑफर्स। सीधे व्हाट्सएप पर बात करें या ऑर्डर करें।</p>
+        <a href="https://wa.me/917440703787?text=नमस्ते!%20मुझे%20प्रोडक्ट्स%20और%20प्राइस%20के%20बारे%20में%20जानकारी%20चाहिए।" target="_blank" class="inline-flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white text-xs md:text-sm font-bold px-4 py-2 rounded-xl transition shadow-md">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>सीधे दुकान से बात करें (WhatsApp Chat)</span>
+        </a>
       </div>
-      <a href="#products-section" class="bg-yellow-400 text-blue-900 font-bold px-6 py-2.5 rounded-xl shadow hover:bg-yellow-300 transition">
-        अभि खरीदें
-      </a>
+      <div class="flex gap-2">
+        <button onclick="toggleAdminModal()" id="txt-admin-btn" class="bg-blue-900/60 hover:bg-blue-900 text-white border border-blue-400 text-sm font-semibold px-4 py-2.5 rounded-xl transition">
+          ⚙️ एडमिन मोड
+        </button>
+      </div>
     </div>
 
-    <!-- सर्च और फ़िल्टर बार -->
-    <div id="products-section" class="mb-8 flex flex-col md:flex-row gap-4 justify-between items-center">
-      <!-- सर्च इनपुट -->
-      <div class="relative w-full md:w-96">
-        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-gray-400"></i>
-        <input type="text" id="search-input" onkeyup="filterProducts()" placeholder="फोन का नाम खोजें (उदा. Motorola, Redmi)..." class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+    <!-- सर्च और कैटगरी फ़िल्टर -->
+    <div id="products-section" class="mb-8 space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="relative w-full sm:w-96">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-gray-400"></i>
+          <input type="text" id="search-input" onkeyup="renderProducts()" placeholder="प्रोडक्ट या ब्रांड खोजें..." class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+        </div>
+
+        <button id="add-prod-btn" onclick="openAddProductModal()" class="hidden bg-green-600 hover:bg-green-700 text-white font-bold px-4 py-2.5 rounded-xl transition flex items-center space-x-2 text-sm">
+          <i class="fa-solid fa-plus"></i>
+          <span id="txt-add-new-prod">+ नया प्रोडक्ट जोड़ें</span>
+        </button>
       </div>
 
-      <!-- ब्रांड फ़िल्टर बटन -->
-      <div class="flex flex-wrap gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
-        <button onclick="setCategory('All')" class="category-btn bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm font-semibold transition">सब देखें</button>
-        <button onclick="setCategory('Motorola')" class="category-btn bg-white text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-lg text-sm font-semibold transition border">Motorola</button>
-        <button onclick="setCategory('Xiaomi')" class="category-btn bg-white text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-lg text-sm font-semibold transition border">Redmi / Mi</button>
-        <button onclick="setCategory('Samsung')" class="category-btn bg-white text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-lg text-sm font-semibold transition border">Samsung</button>
-        <button onclick="setCategory('OnePlus')" class="category-btn bg-white text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-lg text-sm font-semibold transition border">OnePlus</button>
+      <!-- कैटगरी फ़िल्टर -->
+      <div class="flex flex-wrap gap-2 overflow-x-auto pb-2">
+        <button onclick="setCategory('All')" class="cat-btn bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm font-semibold transition" id="cat-all">सब देखें</button>
+        <button onclick="setCategory('Mobile')" class="cat-btn bg-white text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-lg text-sm font-semibold transition border" id="cat-mobile">📱 मोबाइल</button>
+        <button onclick="setCategory('Smartwatch')" class="cat-btn bg-white text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-lg text-sm font-semibold transition border" id="cat-watch">⌚ स्मार्टवॉच</button>
+        <button onclick="setCategory('Audio')" class="cat-btn bg-white text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-lg text-sm font-semibold transition border" id="cat-audio">🎧 इयरबड्स/ऑडियो</button>
+        <button onclick="setCategory('Accessories')" class="cat-btn bg-white text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-lg text-sm font-semibold transition border" id="cat-acc">🔋 एक्सेसरीज</button>
+        <button onclick="setCategory('Laptop')" class="cat-btn bg-white text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-lg text-sm font-semibold transition border" id="cat-laptop">💻 लैपटॉप/टैबलेट</button>
       </div>
     </div>
 
     <!-- प्रोडक्ट्स ग्रिड -->
-    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- जावास्क्रिप्ट से प्रोडक्ट्स यहाँ अपने आप लोड होंगे -->
-    </div>
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
   </main>
 
-  <!-- ================= कार्ट मोडल (Cart Modal) ================= -->
+  <!-- ================= 🛒 कार्ट मोडल ================= -->
   <div id="cart-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex justify-end">
     <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between p-6 overflow-y-auto">
       <div>
         <div class="flex justify-between items-center pb-4 border-b">
-          <h3 class="text-lg font-bold text-gray-800">आपकी शॉपिंग कार्ट 🛒</h3>
+          <h3 class="text-lg font-bold text-gray-800" id="txt-cart-title">आपकी शॉपिंग कार्ट 🛒</h3>
           <button onclick="toggleCart()" class="text-gray-500 hover:text-red-500 text-xl font-bold">&times;</button>
         </div>
-        <div id="cart-items" class="py-4 space-y-4">
-          <!-- कार्ट आइटम्स यहाँ दिखाई देंगे -->
-        </div>
+        <div id="cart-items" class="py-4 space-y-4"></div>
       </div>
 
       <div class="border-t pt-4">
         <div class="flex justify-between font-bold text-lg mb-4">
-          <span>कुल राशि:</span>
+          <span id="txt-total">कुल राशि:</span>
           <span class="text-green-600" id="cart-total">₹0</span>
         </div>
         <button onclick="checkoutWhatsApp()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl flex justify-center items-center space-x-2 transition shadow-lg">
           <i class="fa-brands fa-whatsapp text-xl"></i>
-          <span>व्हाट्सएप पर आर्डर भेजें</span>
+          <span id="txt-wa-btn">व्हाट्सएप पर ऑर्डर भेजें</span>
         </button>
       </div>
     </div>
   </div>
 
+  <!-- ================= ➕ नया प्रोडक्ट जोड़ने का मोडल (Admin) ================= -->
+  <div id="add-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 overflow-y-auto max-h-[90vh]">
+      <div class="flex justify-between items-center pb-3 border-b mb-4">
+        <h3 class="text-lg font-bold text-gray-800" id="txt-modal-add-head">नया इलेक्ट्रॉनिक प्रोडक्ट जोड़ें</h3>
+        <button onclick="closeAddProductModal()" class="text-gray-500 hover:text-red-500 text-xl font-bold">&times;</button>
+      </div>
+
+      <form id="add-product-form" onsubmit="saveNewProduct(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-1">प्रोडक्ट का नाम (Product Name)</label>
+          <input type="text" id="p-name" required placeholder="उदा. Boat Airdopes 141" class="w-full p-2 border rounded-lg text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-1">कैटगरी (Category)</label>
+          <select id="p-category" required class="w-full p-2 border rounded-lg text-sm bg-white">
+            <option value="Mobile">Mobile (मोबाइल)</option>
+            <option value="Smartwatch">Smartwatch (स्मार्टवॉच)</option>
+            <option value="Audio">Audio (इयरबड्स/हेडफोन)</option>
+            <option value="Accessories">Accessories (चार्जर/पावर बैंक)</option>
+            <option value="Laptop">Laptop / Tablet (लैपटॉप/टैबलेट)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-1">स्पेसिफिकेशन / डिटेल्स (Specs)</label>
+          <input type="text" id="p-specs" required placeholder="उदा. 42H Playtime | Fast Charge" class="w-full p-2 border rounded-lg text-sm">
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">कीमत (Price ₹)</label>
+            <input type="number" id="p-price" required placeholder="1299" class="w-full p-2 border rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">पुरानी कीमत (M.R.P ₹)</label>
+            <input type="number" id="p-mrp" required placeholder="2990" class="w-full p-2 border rounded-lg text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-1">फोटो लिंक (Image URL)</label>
+          <input type="url" id="p-image" required placeholder="https://..." class="w-full p-2 border rounded-lg text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-1">टैग / बैज (Badge)</label>
+          <input type="text" id="p-badge" placeholder="उदा. Best Seller / Offer" class="w-full p-2 border rounded-lg text-sm">
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl transition text-sm">
+          सेव करें (Save Product)
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= 💬 फ्लोटिंग व्हाट्सएप चैट बटन ================= -->
+  <a href="https://wa.me/917440703787?text=नमस्ते!%20मुझे%20दुकान%20और%20प्रोडक्ट्स%20के%20बारे%20में%20बात%20करनी%20है।" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl z-50 flex items-center justify-center transition transform hover:scale-110" title="व्हाट्सएप पर बात करें">
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+  </a>
+
   <!-- ================= फूटर ================= -->
   <footer class="bg-gray-800 text-white py-6 mt-12">
     <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
-      <p class="font-bold text-lg" id="shop-title-footer">स्मार्ट मोबाइल पॉइंट</p>
-      <p class="text-sm text-gray-400">पता: मुख्य बाज़ार, नज़दीक बस स्टैंड | फोन: +91 9876543210</p>
+      <p class="font-bold text-lg" id="txt-footer-title">स्मार्ट इलेक्ट्रॉनिक्स पॉइंट</p>
+      <p class="text-sm text-gray-400" id="txt-footer-addr">पता: मुख्य बाज़ार, नज़दीक बस स्टैंड | व्हाट्सएप/फोन: <a href="https://wa.me/917440703787" class="text-green-400 font-bold hover:underline">+91 74407 03787</a></p>
       <p class="text-xs text-gray-500 pt-2">© 2026 सभी अधिकार सुरक्षित।</p>
     </div>
   </footer>
 
   <!-- ================= जावास्क्रिप्ट लॉजिक ================= -->
   <script>
-    // ⚙️ 1. अपनी दुकान की सेटिंग यहाँ बदलें:
     const CONFIG = {
-      shopName: "स्मार्ट मोबाइल पॉइंट",
-      whatsappNumber: "919876543210", // 👈 अपने दोस्त का 10 अंकों का व्हाट्सएप नंबर कंट्री कोड '91' के साथ डालें
-      address: "मुख्य बाज़ार, नज़दीक बस स्टैंड"
+      shopName: { hi: "स्मार्ट इलेक्ट्रॉनिक्स पॉइंट", en: "Smart Electronics Point" },
+      whatsappNumber: "917440703787" // 👈 आपका व्हाट्सएप नंबर
     };
 
-    // 📱 2. उपलब्ध मोबाइल फोन की लिस्ट (यहाँ नए फोन जोड़ या बदल सकते हैं):
-    const PRODUCTS = [
-      {
-        id: 1,
-        name: "Motorola G35 5G",
-        brand: "Motorola",
-        specs: "128GB स्टोरेज | 6GB रैम | 50MP कैमरा",
-        price: 11999,
-        originalPrice: 14999,
-        badge: "5G Best Value",
-        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=60"
+    const DICT = {
+      hi: {
+        cart: "कार्ट",
+        bannerTitle: "इलेक्ट्रॉनिक्स पर धांसू डील्स! 🎉",
+        bannerSub: "मोबाइल, स्मार्टवॉच, इयरबड्स और एक्सेसरीज पर बेस्ट ऑफर्स। सीधे व्हाट्सएप पर बात करें या ऑर्डर करें।",
+        searchPlaceholder: "प्रोडक्ट या ब्रांड खोजें...",
+        catAll: "सब देखें",
+        catMobile: "📱 मोबाइल",
+        catWatch: "⌚ स्मार्टवॉच",
+        catAudio: "🎧 इयरबड्स/ऑडियो",
+        catAcc: "🔋 एक्सेसरीज",
+        catLaptop: "💻 लैपटॉप/टैबलेट",
+        addToCart: "कार्ट में जोड़ें",
+        buyNow: "खरीदें",
+        inquireNow: "दाम / जानकारी पूछें",
+        cartTitle: "आपकी शॉपिंग कार्ट 🛒",
+        total: "कुल राशि:",
+        waBtn: "व्हाट्सएप पर ऑर्डर भेजें",
+        adminBtnOn: "⚙️ एडमिन मोड (ON)",
+        adminBtnOff: "⚙️ एडमिन मोड",
+        addNewProd: "+ नया प्रोडक्ट जोड़ें",
+        modalAddHead: "नया इलेक्ट्रॉनिक प्रोडक्ट जोड़ें",
+        emptyCart: "आपकी कार्ट खाली है!",
+        noProd: "कोई प्रोडक्ट नहीं मिला! 😞",
+        deleteConfirm: "क्या आप इस प्रोडक्ट को हटाना चाहते हैं?"
       },
-      {
-        id: 2,
-        name: "Redmi Note 13 5G",
-        brand: "Xiaomi",
-        specs: "256GB स्टोरेज | 8GB रैम | AMOLED डिस्प्ले",
-        price: 16999,
-        originalPrice: 20999,
-        badge: "Hot Seller",
-        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=60"
-      },
-      {
-        id: 3,
-        name: "Samsung Galaxy M15 5G",
-        brand: "Samsung",
-        specs: "128GB स्टोरेज | 6GB रैम | 6000mAh बैटरी",
-        price: 13499,
-        originalPrice: 16999,
-        badge: "Big Battery",
-        image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=60"
-      },
-      {
-        id: 4,
-        name: "OnePlus Nord CE4 Lite 5G",
-        brand: "OnePlus",
-        specs: "128GB स्टोरेज | 8GB रैम | 80W फ़ास्ट चार्जिंग",
-        price: 19999,
-        originalPrice: 22999,
-        badge: "Superfast",
-        image: "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&auto=format&fit=crop&q=60"
-      },
-      {
-        id: 5,
-        name: "Realme Narzo 70x 5G",
-        brand: "Realme",
-        specs: "128GB स्टोरेज | 6GB रैम | Dimensity 6100+",
-        price: 12499,
-        originalPrice: 15999,
-        badge: "Budget King",
-        image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500&auto=format&fit=crop&q=60"
-      },
-      {
-        id: 6,
-        name: "Apple iPhone 15",
-        brand: "Apple",
-        specs: "128GB स्टोरेज | Dynamic Island | 48MP कैमरा",
-        price: 65999,
-        originalPrice: 79900,
-        badge: "Premium",
-        image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=60"
+      en: {
+        cart: "Cart",
+        bannerTitle: "Awesome Electronics Deals! 🎉",
+        bannerSub: "Best offers on Mobiles, Smartwatches, Earbuds & Accessories. Chat or Order on WhatsApp.",
+        searchPlaceholder: "Search product or brand...",
+        catAll: "All Products",
+        catMobile: "📱 Mobiles",
+        catWatch: "⌚ Smartwatches",
+        catAudio: "🎧 Audio / Earbuds",
+        catAcc: "🔋 Accessories",
+        catLaptop: "💻 Laptops / Tabs",
+        addToCart: "Add to Cart",
+        buyNow: "Buy Now",
+        inquireNow: "Inquire Price",
+        cartTitle: "Your Shopping Cart 🛒",
+        total: "Total Amount:",
+        waBtn: "Send Order on WhatsApp",
+        adminBtnOn: "⚙️ Admin Mode (ON)",
+        adminBtnOff: "⚙️ Admin Mode",
+        addNewProd: "+ Add New Product",
+        modalAddHead: "Add New Electronic Product",
+        emptyCart: "Your cart is empty!",
+        noProd: "No products found! 😞",
+        deleteConfirm: "Do you want to delete this product?"
       }
+    };
+
+    const DEFAULT_PRODUCTS = [
+      { id: 1, name: "Motorola G35 5G", category: "Mobile", specs: "128GB Storage | 6GB RAM | 50MP Camera", price: 11999, mrp: 14999, badge: "5G Smartphone", image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=60" },
+      { id: 2, name: "boAt Airdopes 141", category: "Audio", specs: "42H Playtime | ENx Tech | Fast Charge", price: 1299, mrp: 2990, badge: "Top Seller", image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop&q=60" },
+      { id: 3, name: "Noise ColorFit Pro 4", category: "Smartwatch", specs: "1.72\" Display | Bluetooth Calling | HR Monitor", price: 1799, mrp: 4999, badge: "Smart Watch", image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500&auto=format&fit=crop&q=60" },
+      { id: 4, name: "Fastrack 20000mAh Power Bank", category: "Accessories", specs: "22.5W Fast Charging | Triple Output", price: 1499, mrp: 2499, badge: "Essential", image: "https://images.unsplash.com/photo-1609592424109-dd9892f1b177?w=500&auto=format&fit=crop&q=60" },
+      { id: 5, name: "Samsung Galaxy Tab A9", category: "Laptop", specs: "8.7\" Display | 64GB ROM | Dual Speakers", price: 12999, mrp: 15999, badge: "Tablet", image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&auto=format&fit=crop&q=60" },
+      { id: 6, name: "OnePlus Nord CE4 Lite 5G", category: "Mobile", specs: "128GB Storage | 8GB RAM | 80W Fast Charge", price: 19999, mrp: 22999, badge: "Hot Deal", image: "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&auto=format&fit=crop&q=60" }
     ];
 
-    let cart = [];
+    let currentLang = 'hi';
+    let isAdmin = false;
     let selectedCategory = "All";
+    let cart = [];
 
-    // 🚀 शुरुआत में दुकान का नाम सेट करें
-    document.getElementById('shop-title-header').innerText = CONFIG.shopName;
-    document.getElementById('shop-title-footer').innerText = CONFIG.shopName;
+    let products = JSON.parse(localStorage.getItem('my_electronics_products')) || DEFAULT_PRODUCTS;
 
-    // 🛍️ प्रोडक्ट्स दिखाने का फ़ंक्शन
+    function saveProductsToStorage() {
+      localStorage.setItem('my_electronics_products', JSON.stringify(products));
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'hi' ? 'en' : 'hi';
+      document.getElementById('lang-btn-text').innerText = currentLang === 'hi' ? 'English' : 'हिंदी';
+      updateUI();
+    }
+
+    function updateUI() {
+      const t = DICT[currentLang];
+      document.getElementById('txt-shop-title').innerText = CONFIG.shopName[currentLang];
+      document.getElementById('txt-footer-title').innerText = CONFIG.shopName[currentLang];
+      document.getElementById('txt-cart').innerText = t.cart;
+      document.getElementById('txt-banner-title').innerText = t.bannerTitle;
+      document.getElementById('txt-banner-sub').innerText = t.bannerSub;
+      document.getElementById('search-input').placeholder = t.searchPlaceholder;
+      
+      document.getElementById('cat-all').innerText = t.catAll;
+      document.getElementById('cat-mobile').innerText = t.catMobile;
+      document.getElementById('cat-watch').innerText = t.catWatch;
+      document.getElementById('cat-audio').innerText = t.catAudio;
+      document.getElementById('cat-acc').innerText = t.catAcc;
+      document.getElementById('cat-laptop').innerText = t.catLaptop;
+
+      document.getElementById('txt-cart-title').innerText = t.cartTitle;
+      document.getElementById('txt-total').innerText = t.total;
+      document.getElementById('txt-wa-btn').innerText = t.waBtn;
+
+      document.getElementById('txt-admin-btn').innerText = isAdmin ? t.adminBtnOn : t.adminBtnOff;
+      document.getElementById('txt-add-new-prod').innerText = t.addNewProd;
+      document.getElementById('txt-modal-add-head').innerText = t.modalAddHead;
+
+      renderProducts();
+      updateCartUI();
+    }
+
     function renderProducts() {
       const container = document.getElementById('product-grid');
       const searchQuery = document.getElementById('search-input').value.toLowerCase();
-      
+      const t = DICT[currentLang];
+
       container.innerHTML = "";
 
-      const filtered = PRODUCTS.filter(p => {
-        const matchesCategory = selectedCategory === "All" || p.brand === selectedCategory;
+      const filtered = products.filter(p => {
+        const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
         const matchesSearch = p.name.toLowerCase().includes(searchQuery) || p.specs.toLowerCase().includes(searchQuery);
         return matchesCategory && matchesSearch;
       });
 
       if(filtered.length === 0) {
-        container.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500 font-semibold">कोई मोबाइल नहीं मिला! 😞</div>`;
+        container.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500 font-semibold">${t.noProd}</div>`;
         return;
       }
 
       filtered.forEach(p => {
         container.innerHTML += `
           <div class="bg-white rounded-2xl shadow hover:shadow-xl transition-all duration-300 p-4 border border-gray-100 flex flex-col justify-between relative">
-            <span class="absolute top-6 left-6 bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
-              ${p.badge}
-            </span>
-            <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-contain mb-4 rounded-lg">
+            ${isAdmin ? `<button onclick="deleteProduct(${p.id})" class="absolute top-3 right-3 bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full shadow flex items-center justify-center z-10 font-bold">&times;</button>` : ''}
+
+            <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">${p.badge || 'New'}</span>
+            <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-contain mb-4 rounded-lg mt-4">
             
             <div>
               <h3 class="font-bold text-lg text-gray-800">${p.name}</h3>
@@ -213,129 +332,19 @@
               
               <div class="flex items-center space-x-2 mb-4">
                 <span class="text-xl font-extrabold text-green-600">₹${p.price.toLocaleString('en-IN')}</span>
-                <span class="text-sm text-gray-400 line-through">₹${p.originalPrice.toLocaleString('en-IN')}</span>
+                ${p.mrp ? `<span class="text-sm text-gray-400 line-through">₹${p.mrp.toLocaleString('en-IN')}</span>` : ''}
               </div>
             </div>
 
-            <div class="flex gap-2">
-              <button onclick="addToCart(${p.id})" class="w-full bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold py-2 rounded-xl text-sm transition flex justify-center items-center space-x-1">
-                <i class="fa-solid fa-cart-plus"></i>
-                <span>कार्ट में जोड़ें</span>
-              </button>
-              <button onclick="directBuyWhatsApp(${p.id})" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 rounded-xl text-sm transition flex justify-center items-center space-x-1">
-                <i class="fa-brands fa-whatsapp"></i>
-                <span>खरीदें</span>
-              </button>
-            </div>
-          </div>
-        `;
-      });
-    }
-
-    // 🛒 कार्ट में जोड़ें
-    function addToCart(productId) {
-      const product = PRODUCTS.find(p => p.id === productId);
-      const existing = cart.find(item => item.id === productId);
-
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ ...product, qty: 1 });
-      }
-
-      updateCartUI();
-    }
-
-    // 🔄 कार्ट UI अपडेट करें
-    function updateCartUI() {
-      const cartCount = document.getElementById('cart-count');
-      const cartItems = document.getElementById('cart-items');
-      const cartTotal = document.getElementById('cart-total');
-
-      const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
-      const totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-
-      cartCount.innerText = totalItems;
-      cartTotal.innerText = `₹${totalPrice.toLocaleString('en-IN')}`;
-
-      cartItems.innerHTML = "";
-      if (cart.length === 0) {
-        cartItems.innerHTML = `<p class="text-center text-gray-400 py-8">आपकी कार्ट खाली है!</p>`;
-        return;
-      }
-
-      cart.forEach(item => {
-        cartItems.innerHTML += `
-          <div class="flex justify-between items-center bg-gray-50 p-3 rounded-xl">
-            <div>
-              <p class="font-bold text-sm text-gray-800">${item.name}</p>
-              <p class="text-xs text-green-600 font-semibold">₹${item.price.toLocaleString('en-IN')} x ${item.qty}</p>
-            </div>
-            <div class="flex items-center space-x-2">
-              <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 bg-gray-200 rounded-full font-bold text-xs">-</button>
-              <span class="text-sm font-bold">${item.qty}</span>
-              <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 bg-gray-200 rounded-full font-bold text-xs">+</button>
-            </div>
-          </div>
-        `;
-      });
-    }
-
-    function changeQty(id, delta) {
-      const item = cart.find(i => i.id === id);
-      if (item) {
-        item.qty += delta;
-        if (item.qty <= 0) {
-          cart = cart.filter(i => i.id !== id);
-        }
-      }
-      updateCartUI();
-    }
-
-    function toggleCart() {
-      document.getElementById('cart-modal').classList.toggle('hidden');
-    }
-
-    function setCategory(cat) {
-      selectedCategory = cat;
-      document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.classList.remove('bg-blue-600', 'text-white');
-        btn.classList.add('bg-white', 'text-gray-700');
-      });
-      event.target.classList.remove('bg-white', 'text-gray-700');
-      event.target.classList.add('bg-blue-600', 'text-white');
-      renderProducts();
-    }
-
-    function filterProducts() {
-      renderProducts();
-    }
-
-    // 📲 सीधे व्हाट्सएप पर आर्डर भेजें
-    function directBuyWhatsApp(productId) {
-      const p = PRODUCTS.find(prod => prod.id === productId);
-      const text = `नमस्ते ${CONFIG.shopName}!👋\n\nमुझे यह मोबाइल फोन खरीदना है:\n📱 *मॉडल:* ${p.name}\n⚙️ *स्पेक्स:* ${p.specs}\n💰 *कीमत:* ₹${p.price.toLocaleString('en-IN')}\n\nकृपया मुझे इसकी उपलब्धता और भुगतान का तरीका बताएं।`;
-      window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank');
-    }
-
-    function checkoutWhatsApp() {
-      if (cart.length === 0) return alert('आपकी कार्ट खाली है!');
-
-      let text = `नमस्ते ${CONFIG.shopName}!👋\n\nमैं निम्नलिखित मोबाइल फ़ोनों का ऑर्डर देना चाहता हूँ:\n\n`;
-      let total = 0;
-
-      cart.forEach((item, index) => {
-        text += `${index + 1}. *${item.name}* (मात्रा: ${item.qty}) - ₹${(item.price * item.qty).toLocaleString('en-IN')}\n`;
-        total += item.price * item.qty;
-      });
-
-      text += `\n💵 *कुल योग:* ₹${total.toLocaleString('en-IN')}\n\nकृपया डिलीवरी और भुगतान का विवरण साझा करें।`;
-
-      window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank');
-    }
-
-    // पेज लोड होने पर प्रोडक्ट्स दिखाएं
-    renderProducts();
-  </script>
-</body>
-</html>
+            <div class="space-y-2">
+              <div class="flex gap-2">
+                <button onclick="addToCart(${p.id})" class="w-1/2 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold py-2 rounded-xl text-xs md:text-sm transition flex justify-center items-center space-x-1">
+                  <i class="fa-solid fa-cart-plus"></i>
+                  <span>${t.addToCart}</span>
+                </button>
+                <button onclick="directBuyWhatsApp(${p.id})" class="w-1/2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 rounded-xl text-xs md:text-sm transition flex justify-center items-center space-x-1">
+                  <i class="fa-brands fa-whatsapp"></i>
+                  <span>${t.buyNow}</span>
+                </button>
+              </div>
+              <button onclick="inquirePriceWhatsApp(${p.id})" class
